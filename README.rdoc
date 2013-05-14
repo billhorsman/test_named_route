@@ -99,3 +99,20 @@ gives:
 
     1 tests, 1 assertions, 0 failures, 0 errors, 0 skips
 
+
+=== The Cause
+
+The minitest-rails-capybara gem includes the url_helpers
+
+    # lib/minitest/rails/capybara.rb
+    ...
+    module Capybara
+      module Rails
+        class TestCase < ::ActiveSupport::TestCase
+          include Capybara::RSpecMatchers
+          include Capybara::DSL
+          include MiniTest::Metadata
+          include ::Rails.application.routes.url_helpers
+          ...
+
+which defines a method in the TestCase like test_path which Minitest then tries to run. 
