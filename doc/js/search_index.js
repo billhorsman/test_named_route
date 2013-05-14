@@ -1,0 +1,1 @@
+var search_data = {"index":{"searchIndex":["readme"],"longSearchIndex":[""],"info":[["README","","README_rdoc.html","","<p>README\n<p>This example Rails app demonstrates that having a named route that starts\nwith “test” …\n"]]}}

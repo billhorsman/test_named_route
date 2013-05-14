@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>README - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-README">README</a>
+      <li><a href="#label-Works+Out+of+the+Box">Works Out of the Box</a>
+      <li><a href="#label-With+minitest-rails-capybara">With minitest-rails-capybara</a>
+      <li><a href="#label-Removing+the+problematic+routes">Removing the problematic routes</a>
+    </ul>
+  </nav>
+</div>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h2 id="label-README"><a href="README_rdoc.html">README</a><span><a href="#label-README">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>This example Rails app demonstrates that having a named route that starts
+with “test” will cause minitest-rails-capybara to fall over.</p>
+
+<h3 id="label-Works+Out+of+the+Box">Works Out of the Box<span><a href="#label-Works+Out+of+the+Box">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>As long as we don&#39;t require minitest/rails/capybara then the tests
+pass:</p>
+
+<pre class="ruby"><span class="ruby-comment"># test/test_helper.rb</span>
+<span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;RAILS_ENV&quot;</span>] = <span class="ruby-string">&quot;test&quot;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;../../config/environment&quot;</span>, <span class="ruby-keyword">__FILE__</span>)
+<span class="ruby-identifier">require</span> <span class="ruby-string">&quot;rails/test_help&quot;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&quot;minitest/rails&quot;</span>
+<span class="ruby-comment"># Everything is fine if this next line is commented out</span>
+<span class="ruby-comment"># require &quot;minitest/rails/capybara&quot;</span>
+</pre>
+
+<p>gives:</p>
+
+<pre>$ rake test
+Run options: --seed 5608
+
+# Running tests:
+
+.
+
+Finished tests in 0.010426s, 95.9141 tests/s, 95.9141 assertions/s.
+
+1 tests, 1 assertions, 0 failures, 0 errors, 0 skips</pre>
+
+<h3 id="label-With+minitest-rails-capybara">With minitest-rails-capybara<span><a href="#label-With+minitest-rails-capybara">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>Requiring minitest-rails-capybara breaks it.</p>
+
+<pre class="ruby"><span class="ruby-comment"># test/test_helper.rb</span>
+<span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;RAILS_ENV&quot;</span>] = <span class="ruby-string">&quot;test&quot;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;../../config/environment&quot;</span>, <span class="ruby-keyword">__FILE__</span>)
+<span class="ruby-identifier">require</span> <span class="ruby-string">&quot;rails/test_help&quot;</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&quot;minitest/rails&quot;</span>
+<span class="ruby-comment"># Everything is fine if this next line is commented out</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">&quot;minitest/rails/capybara&quot;</span>
+</pre>
+
+<p>gives:</p>
+
+<pre>$ rake test
+Run options: --seed 13854
+
+# Running tests:
+
+.
+
+Finished tests in 0.010405s, 96.1076 tests/s, 96.1076 assertions/s.
+
+1 tests, 1 assertions, 0 failures, 0 errors, 0 skips
+test_named_route$ rake test
+Run options: --seed 4566
+
+# Running tests:
+
+.E.E.
+
+Finished tests in 0.012332s, 405.4492 tests/s, 81.0898 assertions/s.
+
+  1) Error:
+Capybara::Rails::TestCase#test_url:
+ArgumentError: Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true
+
+  2) Error:
+Capybara::Rails::TestCase#testimonial_url:
+ArgumentError: Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true
+
+5 tests, 1 assertions, 0 failures, 2 errors, 0 skips
+Errors running minitest:controllers! #&lt;RuntimeError: Command failed with status (1): [ruby -I&quot;lib:test&quot; -I&quot;/Users/bill/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/rake-10.0.4/lib&quot; &quot;/Users/bill/.rbenv/versions/2.0.0-p0/lib/ruby/gems/2.0.0/gems/rake-10.0.4/lib/rake/rake_test_loader.rb&quot; &quot;test/controllers   /*_test.rb&quot; ]&gt;</pre>
+
+<h3 id="label-Removing+the+problematic+routes">Removing the problematic routes<span><a href="#label-Removing+the+problematic+routes">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>Removing the named routes beginning with “test” fixes it again.</p>
+
+<pre class="ruby"><span class="ruby-comment"># config/routes.rb</span>
+<span class="ruby-constant">TestNamedRoute</span><span class="ruby-operator">::</span><span class="ruby-constant">Application</span>.<span class="ruby-identifier">routes</span>.<span class="ruby-identifier">draw</span> <span class="ruby-keyword">do</span>
+
+  <span class="ruby-identifier">get</span> <span class="ruby-string">&#39;foo&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;foo#index&#39;</span>
+  <span class="ruby-comment"># get &#39;test&#39; =&gt; &#39;foo#index&#39;</span>
+  <span class="ruby-comment"># get &#39;testimonial&#39; =&gt; &#39;foo#index&#39;</span>
+
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>gives:</p>
+
+<pre>$ rake test
+Run options: --seed 33932
+
+# Running tests:
+
+.
+
+Finished tests in 0.010839s, 92.2594 tests/s, 92.2594 assertions/s.
+
+1 tests, 1 assertions, 0 failures, 0 errors, 0 skips</pre>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
