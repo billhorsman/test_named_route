@@ -2,6 +2,8 @@
 
 This example Rails app demonstrates that having a named route that starts with "test" will cause minitest-rails-capybara to fall over.
 
+See {Issue 14}[https://github.com/blowmage/minitest-rails-capybara/issues/14] at {blowmage/minitest-rails-capybara}[https://github.com/blowmage/minitest-rails-capybara].
+
 === Works Out of the Box
 
 As long as we don't require minitest/rails/capybara then the tests pass:
