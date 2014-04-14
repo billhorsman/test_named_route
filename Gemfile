@@ -4,5 +4,5 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.0.4'
 
 group :development, :test do
-  gem 'minitest-rails-capybara'
+  gem 'minitest-rails-capybara', github: 'blowmage/minitest-rails-capybara', ref: 'a7a7dbce7d8bbbd98edfc5edcb32ae8635c931a0'
 end
